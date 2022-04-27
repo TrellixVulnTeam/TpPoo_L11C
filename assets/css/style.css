@@ -1,0 +1,35 @@
+*{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    box-sizing: border-box;
+    size: 14px;
+    font: 400;
+}
+.sideBar
+{
+    margin-right: 10xp;
+    position: absolute;
+    max-width: 260px;
+    left:0px;
+    height: 100%;
+    background-color: orange;
+}
+
+.profileImage
+{
+    border-radius: 20px;
+    border: 2px;
+    margin: 10px;
+    width: 200px;
+    height: 200px;
+    padding-right: 10px;
+}
+.task
+{
+    margin-top: 05px;
+    width: 70%;
+    border-radius: 30px;
+    background-color: white;
+    color: black;
+    font-size: 25px;
+    font: 800;
+}
