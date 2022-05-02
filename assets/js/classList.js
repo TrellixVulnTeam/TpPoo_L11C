@@ -6,10 +6,8 @@ function testClass(){
 
 class Aliment{
 
-
+    name = "nom de l'aliment"
     constructor(){
 
     }
 }
-
-export default {testClass}
