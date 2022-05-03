@@ -1,6 +1,5 @@
-
 $(document).ready(()=>{
-alert("end of loading")
+console.log("end of loading")
  var moi = new Aliment();
  console.log(moi.name)
 
