@@ -3,15 +3,18 @@
     box-sizing: border-box;
     size: 14px;
     font: 400;
+    background-color: #FFE6C0;
 }
 .sideBar
 {
+    padding-right: 15px;
     margin-right: 10xp;
     position: absolute;
     max-width: 260px;
     left:0px;
     height: 100%;
-    background-color: orange;
+    background-color: #FFE6C0;
+    border-right: 7px solid black;
 }
 
 .profileImage
@@ -25,11 +28,16 @@
 }
 .task
 {
-    margin-top: 05px;
-    width: 70%;
+    margin-top: 10px;
+    width: 100%;
     border-radius: 30px;
-    background-color: white;
+    background-color: #DE832E;
     color: black;
     font-size: 25px;
     font: 800;
+    box-shadow: 8px 5px 12px black;
+}
+.task:hover{
+    box-shadow: 8px 5px 12px rgb(77, 61, 12);
+    background-color: #afa595;
 }
