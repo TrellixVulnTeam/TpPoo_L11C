@@ -12,7 +12,7 @@ Connection.connect();
     if (err) throw err
     Connection.query('CREATE DATABASE utilisateurs ', (err) => {
         if (err) throw err
-        console.log('base de donnes cree')
+        console.log('base de donnes cree')//commentaire
     })
 });*/
 
