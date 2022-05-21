@@ -1,10 +1,11 @@
-$.getScript("classList.js",function(){
-    alert("well import")
-})
 $(document).ready(()=>{
-alert("end of loading")
+console.log("end of loading")
+ var moi = new Aliment();
+ console.log(moi.name)
 
 })
+
+document.writeln("<script type='text/javascript' src='assets/js/classList.js'></script>");
 
 
 
