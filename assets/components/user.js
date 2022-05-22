@@ -1,22 +1,40 @@
 let Connection = require('../../config/bdconnect');
-class User {
+// class User {
 
-    static InsertData(nom, prenom, cb) {
+//     static InsertData(nom, prenom, cb) {
         
-        console.log("Connecté a la base de donnees Utilisateurs");       
-            Connection.query("INSERT INTO user SET nom =?, prenom =? ", [nom,prenom], (err,result) => {
-             if (err) throw err;
-                console.log('Operation perfommed successfully ...');
-                cb(result)
-            })
-    }
-    static getUser(cb) {
-        Connection.query('SELECT * FROM user', (err,rows) => {
-            if (err) throw err;
-            cb(rows);
-        })
-    }
+//         console.log("Connecté a la base de donnees Utilisateurs");       
+//             Connection.query("INSERT INTO user SET nom =?, prenom =? ", [nom,prenom], (err,result) => {
+//              if (err) throw err;
+//                 console.log('Operation perfommed successfully ...');
+//                 cb(result)
+//             })
+//     }
 
+//     static getUser(cb) {
+//         Connection.query('SELECT * FROM user', (err,rows) => {
+//             if (err) throw err;
+//             cb(rows);
+//         })
+//     }
+
+// }
+
+class User{
+    nom
+    prenom
+    etatSanter
+    profession
+    dateNais
+    imc
+    suivie
+    password
+    id
+    email
+}
+
+class nutritionniste extends User{
+    numNutritioniste
 }
 
 module.exports = User;  

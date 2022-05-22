@@ -26,7 +26,7 @@ class Aliment{
 
     name = "nom de l'aliment"
     valeurEnergetique
-    cholesterol
+    cholesterol 
     sodium
     fibre
     lipide
@@ -87,4 +87,12 @@ class vitamine{
         this.E = E
         this.A = A
     }
+}
+
+
+
+class Plat{
+    nom
+    type
+    Aliment
 }
