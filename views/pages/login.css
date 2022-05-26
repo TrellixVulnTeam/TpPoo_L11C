@@ -1,0 +1,39 @@
+body{
+    background: rgb(190, 88, 20) !important;
+    font-family: 'Muli', sans-serif;
+    
+  }
+  h1{
+    color: #fff;
+    padding-bottom: 2rem;
+    font-weight: bold;
+  }
+  a{
+    color: #333;
+  }
+  a:hover{
+    color: #f60;
+    text-decoration: none;
+  }
+  .form-control:focus {
+  
+      color: #000;
+      background-color: #fff;
+      border:2px solid #f60;
+      outline: 0;
+      box-shadow: none;
+  
+  }
+  
+  .btn{
+    background: #f60;
+    border: #f60;
+  }
+  .btn:hover {
+    background: #f60;
+    border: #f60;
+  }
+
+  .card .card-body{
+      background-color: #f60;
+  }
