@@ -2,9 +2,9 @@ let Connection = require('../../config/bdconnect');
 const mysql = require('mysql')
 const myconnection = require('express-myconnection')
 const optionBb = {
-    host:'locahost',
+    host:'localhost',
     user:'root',
-    password:'',
+    password:'folong',
     port:3306,
     database:'test'
 }
@@ -41,9 +41,36 @@ class User{
     id
     email
 
-    updateSuivie(userId,platId,dateConsomation){
-        const sql = "INSERT INTO suivie"
+    suivieUpdate(req,res,userId,platId){
+        req.getConnection((error,connection)=>{
+            if(error){
+                console.log(error)
+            }else{
+                connection.query("INSERT INTO suivie (platId,userId) VALUE(?,?)",[platId,userId],(error,result)=>{
+                    if(error){
+                        console.log(erreur)
+                    }else{
+                        res.status(200).json({result})
+                    }
+                })
+            }
+        })
+    }
 
+    suivieInfo(req,res,userId){
+        req.getConnection((error,connection)=>{
+            if(error){
+                console.log(error)
+            }else{
+                connection.query("SELECT * from suivie WHERE id =?",[userId],(error,result)=>{
+                    if(error){
+                        console.log(erreur)
+                    }else{
+                        res.status(200).json({result})
+                    }
+                })
+            }
+        })
     }
 }
 
