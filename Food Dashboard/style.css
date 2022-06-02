@@ -2,7 +2,7 @@
 body{
     font-family: 'roboto',sans-serif;
     transition: all .5s;
-    background-color: aliceblue;
+    background-color: transparent;
 }
 
 *{
@@ -14,10 +14,10 @@ body{
 .sidebar{
     position: fixed;
     top: 0;
-    left:0;
+    left:-15px;
     width: 250px;
     height: 100%;
-    background: #042331;
+    background: #230431;
     transition: all .5s ease;
     z-index: 1;
 }
@@ -26,17 +26,17 @@ body{
     color:white;
     text-align: center;
     line-height: 70%;
-    background: #063146;
+    background: #064638;
    /*la case my app devient statique on ne peut pas cliquer dessus*/ user-select: none;
 }
-.sidebar ul a{
+.sidebar ul button{
     display: block;
     /*WARNING:*/
     height: 100%;
     width: 100%;
     /*espacement des differents liens*/line-height: 65px;
     font-size: 20px;
-    color:white;
+    color:blue;
     padding-left: 40px;
    /*dessine une boite*/ box-sizing: border-box;
    /*met les lignes au dessus de chaque liens ca rend comme les cases*/ border-top: 5px solid rgba(255,255,255,.1);
@@ -44,7 +44,7 @@ body{
    transition: .5s;
    /*enleve les les traits en bas des liens*/text-decoration: none;
 }
-ul li:hover a{
+ul li:hover button{
 /*en liaison avec la transition*/padding-left: 50px;}
 .sidebar{
     margin-left: 16px;
@@ -53,9 +53,8 @@ ul li:hover a{
     width: 30%;
     height: 30%;
     
-}
-section{
-    top: 100px;
-    position: relative;
-    transform: translateX(25%);
+}/*je cree un gros cardre (a l'aide d'une div)qui occupe tout sauf le sidebar*/
+#sect{
+    width: 1250px;
+    height: 1250px;
 }
