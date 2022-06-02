@@ -3,8 +3,8 @@ let mysql = require('mysql');
 let Connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '',
-    database:'utlisateurs'
+    password: 'folong',
+    database:'test'
 })
 
 Connection.connect();

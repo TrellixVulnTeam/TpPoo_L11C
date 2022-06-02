@@ -1,4 +1,13 @@
 let Connection = require('../../config/bdconnect');
+const mysql = require('mysql')
+const myconnection = require('express-myconnection')
+const optionBb = {
+    host:'locahost',
+    user:'root',
+    password:'',
+    port:3306,
+    database:'test'
+}
 // class User {
 
 //     static InsertData(nom, prenom, cb) {
@@ -31,6 +40,11 @@ class User{
     password
     id
     email
+
+    updateSuivie(userId,platId,dateConsomation){
+        const sql = "INSERT INTO suivie"
+
+    }
 }
 
 class nutritionniste extends User{

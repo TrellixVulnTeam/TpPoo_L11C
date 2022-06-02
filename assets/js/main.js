@@ -5,10 +5,10 @@ var config = {
         {
             labels:['folong','emerson','emeric','cyrile','ebenezer'],
             datasets:[
-                {label:'taux de sucre',data:[2,4,1,6,4],bacgroundColor:'olive'},
-                {label:'taux de sucre',data:[2,2,4,3,2],bacgroundColor:'green'},
-                {label:'taux de sucre',data:[2,4,1,6,3],bacgroundColor:'blue'},
-                {label:'taux de sucre',data:[4,4,2,3,6],bacgroundColor:'red'}
+                {label:'taux de sucre',data:[2,4,1,6,4],backgroundColor:'olive'},
+                {label:'taux de sucre',data:[2,2,4,3,2],backgroundColor:'green'},
+                {label:'taux de sucre',data:[2,4,1,6,3],backgroundColor:'blue'},
+                {label:'taux de sucre',data:[4,4,2,3,6],backgroundColor:'red'}
             ]
         }
     
