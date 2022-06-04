@@ -7,6 +7,7 @@ let bodyParser = require('body-parser');
 let User = require('./assets/components/user').default;
 const user = require('./assets/components/user')
 const mysql = require('mysql')
+const Plat = require('./assets/components/Plat')
 /*Definitoin du moteur de template */
 app.set('view engine', 'ejs');
 /*  Bloc de declaration de nos middleWare */
@@ -38,6 +39,11 @@ app.get('/suivieUpdate',(req,res)=>{
     utiliseur.suivieUpdate(req,res,1,5)
 })
 
+app.post('/createPlat',(req,res,next)=>{
+    // const plat =new Plat(1,1,1,1)
+    var returner = req.query.nom
+    res.send({returner})
+})
 app.get('/suivieinfo',(req,res)=>{
     const utiliseur = new user()
     utiliseur.suivieInfo(req,res,1)
@@ -74,4 +80,4 @@ app.post('/userConnect', (request, response) => {
  //   response.redirect('userConnect');
 })
 /** fin block **/
-app.listen(3000);
+app.listen(3001);
