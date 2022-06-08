@@ -43,7 +43,6 @@ class User{
     id
     email
 
-<<<<<<< HEAD
     constructor(){
 
     }
@@ -69,11 +68,8 @@ class User{
                 console.log("les donnees on bien ete mise a jour")
             }
         })
-=======
-    suivieUpdate(req,res,userId,platId){
-                
->>>>>>> 3fbe19487a1ef72aa0f285962fc78b3680f09068
     }
+    suivieUpdate(req,res,userId,platId){}
     create(nom,dateNais,profession,status,poids,db){
         var sql = "INSERT INTO user(nom,dateNais,profession,status,poids) VALUES(?,?,?,?,?)"
         db.run(sql,[nom,dateNais,profession,status,poids],err=>{
@@ -81,10 +77,9 @@ class User{
                 console.log(err.message)
                 return false
             }else{
-<<<<<<< HEAD
+
                 console.log("l'utiliateur a bien ete creer");
                 return true
-=======
                 connection.query("SELECT * from suivie WHERE id =?",[userId],(error,result)=>{
                     if(error){
                         console.log(error)
@@ -92,7 +87,6 @@ class User{
                         res.status(200).json({result})
                     }
                 })
->>>>>>> 3fbe19487a1ef72aa0f285962fc78b3680f09068
             }
         })
     }
