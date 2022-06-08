@@ -9,6 +9,7 @@ const user = require('./assets/components/user')
 const mysql = require('mysql')
 const Plat = require('./assets/components/Plat')
 
+
 /*Definitoin du moteur de template */
 app.set('view engine', 'ejs');
 /*  Bloc de declaration de nos middleWare */
@@ -19,7 +20,7 @@ app.use(bodyParser.json());
 /* Fin bloc */
 
 
-/* Creation des routes */
+
 // route pour recuperer un info du suivie
 app.get('/suivieUpdate',(req,res)=>{
     const utiliseur = new user()
@@ -35,6 +36,7 @@ app.get('/suivieinfo',(req,res)=>{
     const utiliseur = new user()
     utiliseur.suivieInfo(req,res,1)
 })
+
 app.get('/', (request, response) => {
     
     // response.send("JESUS SAUVE ... crois en lui");
