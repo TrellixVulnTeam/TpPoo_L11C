@@ -24,6 +24,13 @@ const db = new sqlite3.Database(dbName,err=>{
 
 
 let User = require('./assets/components/user');
+
+let User = require('./assets/components/user').default;
+const user = require('./assets/components/user')
+const mysql = require('mysql')
+const Plat = require('./assets/components/Plat')
+
+
 /*Definitoin du moteur de template */
 app.set('view engine', 'ejs');
 /*  Bloc de declaration de nos middleWare */
@@ -37,7 +44,23 @@ app.use(express.urlencoded({
 /* Fin bloc */
 
 
-/* Creation des routes */
+
+// route pour recuperer un info du suivie
+app.get('/suivieUpdate',(req,res)=>{
+    const utiliseur = new user()
+    utiliseur.suivieUpdate(req,res,1,5)
+})
+
+app.post('/createPlat',(req,res,next)=>{
+    // const plat =new Plat(1,1,1,1)
+    var returner = req.query.nom
+    res.send({returner})
+})
+app.get('/suivieinfo',(req,res)=>{
+    const utiliseur = new user()
+    utiliseur.suivieInfo(req,res,1)
+})
+
 app.get('/', (request, response) => {
     
     // response.send("JESUS SAUVE ... crois en lui");
@@ -122,4 +145,4 @@ app.post('/user/create',(req,res)=>{
     res.send(reponce)
 })
 /** fin block **/
-app.listen(3000);
+app.listen(3001);
