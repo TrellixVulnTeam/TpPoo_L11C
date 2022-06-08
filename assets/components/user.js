@@ -1,6 +1,7 @@
 let Connection = require('../../config/bdconnect');
 const mysql = require('mysql')
-const myconnection = require('express-myconnection')
+const path = require('path')
+// const db = sq
 const optionBb = {
     host:'localhost',
     user:'root',
@@ -38,40 +39,92 @@ class User{
     imc
     suivie
     password
+    status
     id
     email
 
-    suivieUpdate(req,res,userId,platId){
-        req.getConnection((error,connection)=>{
-            if(error){
-                console.log(error)
-            }else{
-                connection.query("INSERT INTO suivie (platId,userId) VALUE(?,?)",[platId,userId],(error,result)=>{
-                    if(error){
-                        console.log(erreur)
-                    }else{
-                        res.status(200).json({result})
-                    }
-                })
-            }
-        })
-    }
+    constructor(){
 
-    suivieInfo(req,res,userId){
-        req.getConnection((error,connection)=>{
-            if(error){
-                console.log(error)
+    }
+    userHistorique(userId,db){
+        var sql = "SELECT * FROM historique WHERE userId = ?"
+        db.all(sql,[userId],(err,result)=>{
+            if(err){
+                console.log(err.message)
+                return (err)
+            }
+            console.log(result)
+            return result
+        })
+    }
+    updateHistorique(userId,platId,db){
+        var curentDate = new Date()
+        var datePrise = curentDate.getFullYear()
+        var sql = "INSERT INTO historique(platId,datePrise,userId) VALUES(?,?,?)"
+        db.run(sql,[platId,datePrise,userId],err=>{
+            if(err){
+                console.log(err.message)
             }else{
-                connection.query("SELECT * from suivie WHERE id =?",[userId],(error,result)=>{
-                    if(error){
-                        console.log(erreur)
-                    }else{
-                        res.status(200).json({result})
-                    }
-                })
+                console.log("les donnees on bien ete mise a jour")
             }
         })
     }
+    create(nom,dateNais,profession,status,poids,db){
+        var sql = "INSERT INTO user(nom,dateNais,profession,status,poids) VALUES(?,?,?,?,?)"
+        db.run(sql,[nom,dateNais,profession,status,poids],err=>{
+            if(err){
+                console.log(err.message)
+                return false
+            }else{
+                console.log("l'utiliateur a bien ete creer");
+                return true
+            }
+        })
+    }
+    update(nom,dateNais,prenom,profession,status,poids,db){
+        var sql = "UPDATE user SET nom =?, prenom =?,profession=?,dateNais=?,status=?,poids=?"
+        db.run(sql,[nom,prenom,profession,dateNais,status,poids],err=>{
+            if(err){
+                console.log(err.message)
+                return false
+            }else{
+                console.log("mise ajour du nouvelle utilisateur effectuer avec success")
+                return true
+            }
+        })
+    }
+    // suivieUpdate(req,res,userId,platId){
+    //     req.getConnection((error,connection)=>{
+    //         if(error){
+    //             console.log(error)
+    //         }else{
+    //             connection.query("INSERT INTO suivie (platId,userId) VALUE(?,?)",[platId,userId],(error,result)=>{
+    //                 if(error){
+    //                     console.log(erreur)
+    //                 }else{
+    //                     res.status(200).json({result})
+    //                 }
+    //             })
+    //         }
+    //     })
+    // }
+
+    // suivieInfo(req,res,userId){
+    //     req.getConnection((error,connection)=>{
+    //         if(error){
+    //             console.log(error)
+    //         }else{
+    //             connection.query("SELECT * from suivie WHERE id =?",[userId],(error,result)=>{
+    //                 if(error){
+    //                     console.log(erreur)
+    //                 }else{
+    //                     res.status(200).json({result})
+    //                 }
+    //             })
+    //         }
+    //     })
+    // }
+
 }
 
 class nutritionniste extends User{

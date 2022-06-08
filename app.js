@@ -4,7 +4,26 @@ let ejs = require('ejs');
 const { request } = require('express');
 const { response } = require('express');
 let bodyParser = require('body-parser');
-let User = require('./assets/components/user').default;
+
+
+//connection a la base de donnees slite qui se trouve dans le dossier data
+const sqlite3 = require('sqlite3')
+const path = require('path')
+const dbName = path.join(__dirname,"data","food.sqlite")
+
+const db = new sqlite3.Database(dbName,err=>{
+    if (err) {
+        console.log(err.message);
+    }else{
+        console.log("connection reussi")
+    }
+})
+
+
+
+
+
+let User = require('./assets/components/user');
 /*Definitoin du moteur de template */
 app.set('view engine', 'ejs');
 /*  Bloc de declaration de nos middleWare */
@@ -12,6 +31,9 @@ app.set('view engine', 'ejs');
 app.use("/assets", express.static("public")); 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.urlencoded({
+    extended:true
+}))
 /* Fin bloc */
 
 
@@ -75,6 +97,29 @@ app.post('/userConnect', (request, response) => {
     // recuperation et ajout des donnees du plat dans la bd
     
  //   response.redirect('userConnect');
+})
+
+//function de recuperation de l'historyque de l'utilisateur
+app.get('/user/historique',(req,res)=>{
+    var emerson = new User();
+    var userId = req.query.userId
+    console.log(req.query.userId)
+    var historique = emerson.userHistorique(userId,db)
+    res.send({historique:historique})
+})
+
+app.post('/user/create',(req,res)=>{
+    var valere = new User();
+    valere.nom = req.body.nom
+    valere.prenom = req.body.prenom
+    valere.dateNais = req.body.dateNais
+    valere.status = req.body.status
+    valere.profession = req.body.profession
+    valere.poids = body.poids
+    console.log(req.body.name);
+    console.log(req.body);
+    var reponce =  valere.create(valere.nom,valere.dateNais,valere.profession,valere.status,valere.poids,db)
+    res.send(reponce)
 })
 /** fin block **/
 app.listen(3000);
