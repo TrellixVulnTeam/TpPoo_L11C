@@ -19,7 +19,7 @@ exports.createUser = (req,res)=>{
     valere.dateNais = req.body.dateNais
     valere.status = req.body.status
     valere.profession = req.body.profession
-    valere.poids = body.poids
+    valere.poids = req.body.poids
     console.log(req.body.name);
     console.log(req.body);
     var reponce =  valere.create(valere.nom,valere.dateNais,valere.profession,valere.status,valere.poids,db)
@@ -37,7 +37,7 @@ exports.historique = (req,res)=>{
 
 
 exports.connect = (request, response) => {
-    console.log("connection du user en cour");
+    console.log("connection du user en cours");
     console.log(request.body);
     if (request.body.nom === undefined || request.body.prenom == '' || request.body.prenom === undefined || request.body.nom == '') {
       response.render('pages/saveUser.ejs', { error: "OOPS :( un probleme est survenue" });
@@ -45,7 +45,6 @@ exports.connect = (request, response) => {
 
     }
     else {
-       
         User.InsertData(request.body.nom, request.body.prenom, () => {
             response.render('pages/saveUser.ejs', { success: "Felicitation !!! Enregistrement effectuée ..." });
 
