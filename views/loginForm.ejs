@@ -61,8 +61,8 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">Profil <span class="pe-7s-angle-down"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="login">Se Connecter</a></li>
-                                <li><a href="login">S'inscirire</a></li>
+                                <li><a href="user/login">Se Connecter</a></li>
+                                <li><a href="user/login">S'inscirire</a></li>
                             </ul>
                         </li>
                         <li><a href="#search"><i class="fa fa-search"></i></a></li>
@@ -93,14 +93,14 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="login-wrap">
                 <div class="login-html">
                   <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab sign">Sign In</label>
                   <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab sign">Sign Up</label>
                   <div class="login-form">
 
-                    <form action="user/connect" method="post">
+                    <form action="/logingo" method="post">
                       <div class="sign-in-htm">
                         <div class="group">
                           <label for="user" class="label">Username</label>
@@ -125,7 +125,8 @@
                     </form>
 
 
-                    <form action="singUp" method="post">
+
+                    <form action="/login" method="post">
 
                       <div class="sign-up-htm">
                         <div class="group">

@@ -55,7 +55,25 @@ exports.connect = (request, response) => {
 
 exports.login = (request, response) => {
     console.log("connection du user en cour");
-    console.log(request.body);
+    console.log(request.query);
+    response.render('loginForm');
+// , { success: "Felicitation !!! Enregistrement effectuée ..." }
+    // if (request.body.nom === undefined || request.body.prenom == '' || request.body.prenom === undefined || request.body.nom == '') {
+    //   response.render('pages/saveUser.ejs', { error: "OOPS :( un probleme est survenue" });
+    //  //   response.redirect('/userConnect');
+
+    // }
+    // else {
+       
+    //     User.InsertData(request.body.nom, request.body.prenom, () => {
+    //         response.render('pages/saveUser.ejs', { success: "Felicitation !!! Enregistrement effectuée ..." });
+
+    //     })
+    // }
+}
+exports.loginCheck = (request, response) => {
+    console.log("connection du user en cour pout le check");
+    console.log(request.query);
     response.render('plat');
 // , { success: "Felicitation !!! Enregistrement effectuée ..." }
     // if (request.body.nom === undefined || request.body.prenom == '' || request.body.prenom === undefined || request.body.nom == '') {

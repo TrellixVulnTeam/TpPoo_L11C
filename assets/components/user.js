@@ -1,34 +1,6 @@
-let Connection = require('../../config/bdconnect');
-const mysql = require('mysql')
-const path = require('path')
-// const db = sq
-const optionBb = {
-    host:'localhost',
-    user:'root',
-    password:'folong',
-    port:3306,
-    database:'test'
-}
-// class User {
 
-//     static InsertData(nom, prenom, cb) {
-        
-//         console.log("Connecté a la base de donnees Utilisateurs");       
-//             Connection.query("INSERT INTO user SET nom =?, prenom =? ", [nom,prenom], (err,result) => {
-//              if (err) throw err;
-//                 console.log('Operation perfommed successfully ...');
-//                 cb(result)
-//             })
-//     }
-
-//     static getUser(cb) {
-//         Connection.query('SELECT * FROM user', (err,rows) => {
-//             if (err) throw err;
-//             cb(rows);
-//         })
-//     }
-
-// }
+const connector = require('../../db')
+const db = connector 
 
 class User{
     nom
@@ -69,7 +41,7 @@ class User{
             }
         })
     }
-    suivieUpdate(req,res,userId,platId){}
+    // suivieUpdate(req,res,userId,platId){}
     create(nom,dateNais,profession,status,poids,db){
         var sql = "INSERT INTO user(nom,dateNais,profession,status,poids) VALUES(?,?,?,?,?)"
         db.run(sql,[nom,dateNais,profession,status,poids],err=>{
@@ -80,13 +52,6 @@ class User{
 
                 console.log("l'utiliateur a bien ete creer");
                 return true
-                connection.query("SELECT * from suivie WHERE id =?",[userId],(error,result)=>{
-                    if(error){
-                        console.log(error)
-                    }else{
-                        res.status(200).json({result})
-                    }
-                })
             }
         })
     }
@@ -102,43 +67,61 @@ class User{
             }
         })
     }
-    // suivieUpdate(req,res,userId,platId){
-    //     req.getConnection((error,connection)=>{
-    //         if(error){
-    //             console.log(error)
-    //         }else{
-    //             connection.query("INSERT INTO suivie (platId,userId) VALUE(?,?)",[platId,userId],(error,result)=>{
-    //                 if(error){
-    //                     console.log(erreur)
-    //                 }else{
-    //                     res.status(200).json({result})
-    //                 }
-    //             })
-    //         }
-    //     })
-    // }
-
-    // suivieInfo(req,res,userId){
-    //     req.getConnection((error,connection)=>{
-    //         if(error){
-    //             console.log(error)
-    //         }else{
-    //             connection.query("SELECT * from suivie WHERE id =?",[userId],(error,result)=>{
-    //                 if(error){
-    //                     console.log(erreur)
-    //                 }else{
-    //                     res.status(200).json({result})
-    //                 }
-    //             })
-    //         }
-    //     })
-    // }
-
+    
 }
 
-class nutritionniste extends User{
+class Nutritionniste extends User{
     numNutritioniste
+    constructor(){
+        
+    }
+    
+    commentPlate(plateId,comment,res){
+        var sql = "INSERT INTO comment(userId,platId,comment) VAUES(?,?,?)"
+        db.run(sql,[this.id,plateId,comment],err=>{
+            if(err){
+                console.log("mis ajour du commentaire du nutritioniste reussi")
+                res.render('404')
+                res.end()
+            }
+            console.log("fin de l'enregistremert du commentaire")
+            res.render('index',{message:"ajout du comentaire enregiatrer avec success"})
+        })
+    }
 }
 
-module.exports = User;  
-   
+exports.User = User;
+exports.numNutritioniste = Nutritionniste  
+
+
+// suivieUpdate(req,res,userId,platId){
+//     req.getConnection((error,connection)=>{
+//         if(error){
+//             console.log(error)
+//         }else{
+//             connection.query("INSERT INTO suivie (platId,userId) VALUE(?,?)",[platId,userId],(error,result)=>{
+//                 if(error){
+//                     console.log(erreur)
+//                 }else{
+//                     res.status(200).json({result})
+//                 }
+//             })
+//         }
+//     })
+// }
+
+// suivieInfo(req,res,userId){
+//     req.getConnection((error,connection)=>{
+//         if(error){
+//             console.log(error)
+//         }else{
+//             connection.query("SELECT * from suivie WHERE id =?",[userId],(error,result)=>{
+//                 if(error){
+//                     console.log(erreur)
+//                 }else{
+//                     res.status(200).json({result})
+//                 }
+//             })
+//         }
+//     })
+// }

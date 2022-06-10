@@ -11,7 +11,7 @@ const db = new sqlite3.Database(dbName,err=>{
     if (err) {
         console.log(err.message);
     }else{
-        console.log("connection a la base donnees food reussi")
+        console.log("connection a la base donnees food reussi user")
     }
 })
 
@@ -22,6 +22,9 @@ const userRoute = require('./routes/userRoute')
 /*Definitoin du moteur de template */
 app.set('view engine', 'ejs');
 
+app.post('/login',(req,res)=>{
+    res.render('plat')
+})
 //definition des outils a utiliser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/assets", express.static("public"));
@@ -29,7 +32,4 @@ app.use(bodyParser.json());
 app.use('/',router)
 app.use('/user',userRoute)
 
-app.get('/login',(req,res)=>{
-    res.render('login')
-})
 app.listen(3008);
