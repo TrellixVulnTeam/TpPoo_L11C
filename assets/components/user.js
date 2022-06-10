@@ -69,7 +69,8 @@ class User{
             }
         })
     }
-    suivieUpdate(req,res,userId,platId){}
+    suivieUpdate(req, res, userId, platId) { }
+    
     create(nom,dateNais,profession,status,poids,db){
         var sql = "INSERT INTO user(nom,dateNais,profession,status,poids) VALUES(?,?,?,?,?)"
         db.run(sql,[nom,dateNais,profession,status,poids],err=>{

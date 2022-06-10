@@ -3,15 +3,7 @@ let database = new sqlite3.Database('../../data/food.sqlite',(err) => {
     if (err) throw err;
     console.log('Database is food.sqlite is open...');
 });
-   /*    database.run('INSERT INTO repas(repasId,nom,typeConsommateur,platPrincipal,complement,recette)', [3,'Bongo', 'Vegan', 'Bongo', 'Riz,Plantain', 'Preparation au feu de bois , tomate necessaire'], (result, err) => {
-            if (err) throw err;
-            console.log("Data inserted");
-       })
-database.each('SELECT * FROM repas', (err, data) => {
-    if (err) throw err;
-    console.log(data.repasId,data.nom);
-})
-    */
+
 
 class Repas {
     nom;
@@ -82,29 +74,29 @@ class Repas {
 
 }
 
-let food = new Repas('3', "Igname blanc", "Vegetarien", "igname", "  m", "Ecraser les condiments et bouillies dans avec l'igname");
-console.log(food.recette);
-/*food.InsertFood((result) => {
-    console.log(result);
-});
-*/
-food.GetAllFood((result) => {
-    console.log(result);
-})
-food.UpdateAspecificFood('2', 'PilePomme', 'all', 'pommes et Haricots', 'Aucun', 'Huile rouge+pommes+Haricot+sel', '123', (result) => {
-    console.log('result is being charge');
-});
+// let food = new Repas('3', "Igname blanc", "Vegetarien", "igname", "  m", "Ecraser les condiments et bouillies dans avec l'igname");
+// console.log(food.recette);
+// /*food.InsertFood((result) => {
+//     console.log(result);
+// });
+// */
+// food.GetAllFood((result) => {
+//     console.log(result);
+// })
+// food.UpdateAspecificFood('2', 'PilePomme', 'all', 'pommes et Haricots', 'Aucun', 'Huile rouge+pommes+Haricot+sel', '123', (result) => {
+//     console.log('result is being charge');
+// });
 
-food.GetAllFood((result) => {
-    console.log(result);
-})
-food.DeleteFood('3', (result) => {
-    console.log("suppression Reussie...");
-})
+// food.GetAllFood((result) => {
+//     console.log(result);
+// })
+// food.DeleteFood('3', (result) => {
+//     console.log("suppression Reussie...");
+// })
 //food.ADDcolumValeurE();
 
 
-
+module.exports = Repas;
 
 
 
@@ -119,20 +111,6 @@ food.DeleteFood('3', (result) => {
 .run//
 
  */
-
-// class Repas{
-
-//     static InsertFood(nom,typeconso,platprin,complement,recette) {
-//         database.run('INSERT INTO repas(nom,typeConsommateur,platPrincipal,complement,recette)', [nom, typeconso, platprin, complement, recette], (result, err) => {
-//             if (err) throw err;
-//             console.log("Data inserted");
-//     })
-//     }
-// }
-
-// let Bongo = new Repas();
-// Bongo.InsertFood('Bongo', 'Vegan', 'Bongo', 'Riz,Plantain', 'Preparation au feu de bois , tomate necessaire');
-
 
 
 
