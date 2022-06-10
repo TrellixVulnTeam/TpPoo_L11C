@@ -19,7 +19,7 @@ const db = new sqlite3.Database(dbName,err=>{
 const router = require('./routes/route')
 const userRoute = require('./routes/userRoute')
 
-/*Definitoin du moteur de template */
+/*Definition du moteur de template */
 app.set('view engine', 'ejs');
 
 app.post('/login',(req,res)=>{
@@ -32,4 +32,8 @@ app.use(bodyParser.json());
 app.use('/',router)
 app.use('/user',userRoute)
 
-app.listen(3008);
+
+
+app.listen(3000, () => {
+    console.log('Server is running');
+});
