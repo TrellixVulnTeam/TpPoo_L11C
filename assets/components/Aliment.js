@@ -23,8 +23,8 @@ class Aliment{
         console.log(this.amidon)
     }
     getAliment(alimentId){
-        var sql = "SELECT * FROM aliment WHERE id = ?"
-        db.get(sql,[alimentId],(err,rows)=>{
+        var sql = "SELECT * FROM aliment WHERE alimentId = ?"
+        db.get(sql,[alimentId],(rows,err)=>{
             if (err) {
                 console.log(err.message);
                 console.log("echec de la recuperation de l'aliment");
@@ -37,8 +37,8 @@ class Aliment{
         })
     }
     add(Aliment){
-        var sql = "INSERT INTO aliment(name,valeurEnergetique,cholesterol,sodium,fibre,lipide,sucre,amidon,proteine) VALUES(?,?,?,?,?,?,?,?,?)"
-        db.run(sql,err=>{
+        var sql = "INSERT INTO aliment(nom,valeurEnergetique,cholesterol,sodium,fibre,lipide,amidon,proteine) VALUES(?,?,?,?,?,?,?,?)"
+        db.run(sql,[],err=>{
             if(err){
                 console.log(err.message);
                 console.log("enregitrement du nouvelle aliment a echouer");
@@ -72,5 +72,15 @@ class Aliment{
         })
     }
 }
+var tomate = new Aliment("tomate",15,"c")
 
+
+tomate.cholesterol =9
+tomate.sodium = 2
+tomate.fibre=23
+tomate.lipide=13
+tomate.sucre=2
+tomate.amidon=3
+tomate.proteine = 7
+tomate.add()
 module.exports = Aliment
