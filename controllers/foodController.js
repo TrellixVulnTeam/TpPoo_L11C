@@ -1,15 +1,18 @@
-let Food = require('../assets/components/Repas');
-const sqlite3 = require('sqlite3');
+const food =require('../assets/components/Repas.js')
+const sqlite3 = require('sqlite3')
 const path = require('path')
-// Donc toutes les dependances aui sont dans Repas.js doivent etre appele au niveau de son controller
+const dbName = path.join(__dirname,"../data","food.sqlite")
 
-let database = new sqlite3.Database('../data/food.sqlite',(err) => {
-    if (err) throw err;
-    console.log('Database is food.sqlite is open...');
-});
+const db = new sqlite3.Database(dbName,err=>{
+    if (err) {
+        console.log(err.message);
+    }else{
+        console.log("connection a la base donnees food reussi")
+    }
+})
 
 exports.DisplayFood = (req,res) => {
-    let food = new Food();
+    let food = new food();
     food.GetAllFood((result) => {
         res.render('../views/pages/plat.ejs',{Food:result})
     })

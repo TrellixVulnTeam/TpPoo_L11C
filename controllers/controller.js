@@ -1,10 +1,11 @@
 exports.index = (req,res)=>{
-    req.send({messge:"le controller ainsi que la route fonstionnes parfaitement"})
+    // res.send("le controller ainsi que la route fonstionnes parfaitement")
+    res.render("../views/pages/accueil.ejs");
 }
 
 exports.plat =  (request, response) => {
     // response.send("JESUS SAUVE ... crois en lui");
-    response.render('pages/index.ejs');
+    response.render('pages/login.ejs');
 };
 
 exports.addPlate =  (request, response) => {
@@ -14,7 +15,7 @@ exports.addPlate =  (request, response) => {
 
 exports.repas = (request, response) => {
     let data = require('./TpPoo/config/donnees')
-    let donnees = data.rec(2,(plat)=>{
+    let donnees = data.rec(2,(plat)=>{s
 
              // response.send("JESUS SAUVE ... crois en lui");
     response.render('pages/plat.ejs', { plats :plat } ); 
