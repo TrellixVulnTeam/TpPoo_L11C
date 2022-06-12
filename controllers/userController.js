@@ -31,7 +31,8 @@ exports.historique = (req,res)=>{
     var emerson = new User();
     var userId = req.query.userId
     console.log(req.query.userId)
-    var historique = emerson.userHistorique(userId,db)
+    var historique = emerson.userHistorique(1)
+    console.log("voici L\'historique",historique);
     res.send({historique:historique})
 }
 

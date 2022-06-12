@@ -1,17 +1,6 @@
-const sqlite3 = require('sqlite3');
-let database = new sqlite3.Database('../../data/food.sqlite',(err) => {
-    if (err) throw err;
-    console.log('Database is food.sqlite is open...');
-});
-   /*    database.run('INSERT INTO repas(repasId,nom,typeConsommateur,platPrincipal,complement,recette)', [3,'Bongo', 'Vegan', 'Bongo', 'Riz,Plantain', 'Preparation au feu de bois , tomate necessaire'], (result, err) => {
-            if (err) throw err;
-            console.log("Data inserted");
-       })
-database.each('SELECT * FROM repas', (err, data) => {
-    if (err) throw err;
-    console.log(data.repasId,data.nom);
-})
-    */
+// const sqlite3 = require('sqlite3');
+let database = require('../../db')
+
 
 class Repas {
     nom;
@@ -133,38 +122,7 @@ food.DeleteFood('3', (result) => {
 // let Bongo = new Repas();
 // Bongo.InsertFood('Bongo', 'Vegan', 'Bongo', 'Riz,Plantain', 'Preparation au feu de bois , tomate necessaire');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 
 
 
