@@ -12,18 +12,20 @@ const db = new sqlite3.Database(dbName,err=>{
 })
 
 exports.createUser = (req,res)=>{
-    console.log("creation du user")
-    var valere = new User();
-    valere.nom = req.body.nom
-    valere.prenom = req.body.prenom
-    valere.dateNais = req.body.dateNais
-    valere.status = req.body.status
-    valere.profession = req.body.profession
-    valere.poids = req.body.poids
-    console.log(req.body.name);
-    console.log(req.body);
-    var reponce =  valere.create(valere.nom,valere.dateNais,valere.profession,valere.status,valere.poids,db)
-    res.send(reponce)
+    // console.log("creation du user")
+    // let valere = new User();
+    // valere.nom = req.body.nom
+    // valere.prenom = req.body.prenom
+    // valere.dateNais = req.body.dateNais
+    // valere.status = req.body.status
+    // valere.profession = req.body.profession
+    // valere.poids = req.body.poids
+    // console.log(req.body.name);
+    // console.log(req.body);
+    let user = new User();
+    var reponce = user.create(req.body.status, req.body.nom, req.body.dateNais, req.body.number, req.body.profession, db);
+    if (reponce)
+        console.log('User Created ...');
 }
 
 exports.historique = (req,res)=>{

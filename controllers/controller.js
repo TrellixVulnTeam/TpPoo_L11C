@@ -12,12 +12,12 @@ const db = new sqlite3.Database(dbName,err=>{
 
 
 exports.index = (req,res)=>{
-    res.render('index.ejs')
+    res.render('index.ejs');
 }
 
 exports.plat =  (request, response) => {
     // response.send("JESUS SAUVE ... crois en lui");
-    response.render('plat.ejs');
+    response.render('pages/login.ejs');
 };
 
 exports.addPlate =  (request, response) => {
@@ -26,25 +26,28 @@ exports.addPlate =  (request, response) => {
 }
 
 exports.repas = (request, response) => {
-    var sql = "SELECT * FROM plat"
+    let data = require('./TpPoo/config/donnees')
+    let donnees = data.rec(2, (plat) => {
+        s
+        var sql = "SELECT * FROM plat"
 
-     data = db.all(sql,[],(err,result)=>{
-         if (err) {
-             console.log(err.messge);
-            //  response.send({erreur:err.messge})
-            response.render('404.ejs', { plats :result } ); 
+        data = db.all(sql, [], (err, result) => {
+            if (err) {
+                console.log(err.messge);
+                //  response.send({erreur:err.messge})
+                response.render('404.ejs', { plats: result });
 
-         }else{
-            //  response.send({data:result})
+            } else {
+                //  response.send({data:result})
 
-             // response.send("JESUS SAUVE ... crois en lui");
-            response.render('plat.ejs', { plats :plat } ); 
-         }
+                // response.send("JESUS SAUVE ... crois en lui");
+                response.render('plat.ejs', { plats: plat });
+            }
+        })
     })
-   
-}
+    }
 
 exports.error = (request, response) => {
-    // response.send("JESUS SAUVE ... crois en lui");
-    response.render('404.ejs');
-}
+            // response.send("JESUS SAUVE ... crois en lui");
+            response.render('404.ejs');
+        }

@@ -6,7 +6,7 @@ const userController = require('../controllers/userController')
 
 
 router.get('/',controller.index);
-router.get('/plat',controller.plat)
+router.get('/plat', controller.plat);
 router.get('/addPlate',controller.addPlate)
 router.get('/repas', controller.repas);
 router.get('/404',controller.error)

@@ -32,6 +32,11 @@ app.use(bodyParser.json());
 app.use('/',router)
 app.use('/user',userRoute)
 
+app.get('/', (req, res) => {
+    if (err) throw err
+    res.render('./views/pages/plat.ejs');
+})
+
 
 
 app.listen(3000, () => {

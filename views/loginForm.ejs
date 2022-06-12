@@ -17,17 +17,17 @@
     <title>Acccueil</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/animate.css" rel="stylesheet">
-    <link href="assets/css/plugins.css" rel="stylesheet">
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/bootstrap/css/animate.css" rel="stylesheet">
+    <link href="assets/bootstrap/css/plugins.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="assets/css/login.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="assets/bootstrap/css/login.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/bootstrap/css/style.css">
 
     <!-- Custom Fonts -->
-    <link href="assets/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/pe-icons.css" rel="stylesheet">
+    <link href="assets/bootstrap/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/bootstrap/css/pe-icons.css" rel="stylesheet">
 
 </head>
 
@@ -100,7 +100,7 @@
                   <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab sign">Sign Up</label>
                   <div class="login-form">
 
-                    <form action="/logingo" method="post">
+                    <form action="/user/create" method="post">
                       <div class="sign-in-htm">
                         <div class="group">
                           <label for="user" class="label">Username</label>
@@ -126,40 +126,41 @@
 
 
 
-                    <form action="/login" method="post">
+                    <form action="user/create" method="post">
 
                       <div class="sign-up-htm">
                         <div class="group">
                           <label for="user" class="label">Username</label>
-                          <input id="user" type="text" class="input">
+                          <input id="user" type="text" class="input" name ="nom">
                         </div>
                         <div class="group">
                           <label for="dateNaiss" class="label">Date de naissance</label>
-                          <input id="dateNaiss" type="date" class="input">
+                          <input id="dateNaiss" type="date" class="input" name="dateNais">
                         </div>
                         <div class="group">
                           <label for="pass" class="label">Password</label>
-                          <input id="pass" type="password" class="input" data-type="password">
+                          <input id="pass" type="password" class="input" data-type="password" name="pass">
                         </div>
                         <div class="group">
                           <label for="profession" class="label">Profession</label>
-                          <input id="profession" type="text" class="input" data-type="text">
+                          <input id="profession" type="text" class="input" data-type="text" name="profession">
                         </div>
                         <div class="group">
                           <label for="poids" class="label">Poids</label>
-                          <input id="poids" type="number" class="input" data-type="number">
+                          <input id="poids" type="number" class="input" data-type="number" name="number">
                         </div>
                         <div class="group">
-                          <label for="statut" class="label">Statut</label>
-                          <select name="statut" id="">
-                            <option value="Nutritioniste">Nutritioniste</option>
-                            <option value="simple utilisateur"> simple utilisateur</option>
-                            
+                          <label for="status" class="label">Statut</label>
+                          <select name="status" id="">
+                            <option value="Nutritioniste" name = "status">Nutritioniste</option>
+                            <option value="Admin"> Admin</option>
+                            <option value="User">User</option>
+                            <option value="Conseiller">Conseiller</option>
                           </select>
                         </div>
                         <div class="group">
                           <label for="pass" class="label">Email Address</label>
-                          <input id="pass" type="text" class="input">
+                          <input id="pass" type="email" class="input" name="mail">
                         </div>
 
                         <div class="group">
@@ -167,7 +168,6 @@
                         </div>
 
                         <div class="hr"></div>
-                        
                         <div class="foot-lnk">
                           <label for="tab-1">Already Member?</a>
                         </div>
@@ -183,11 +183,11 @@
         </section>
         </div>
     </div>
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/plugins.js"></script>
+    <script src="assets/bootstrap/js/jquery.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/bootstrap/js/plugins.js"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-    <script src="assets/js/init.js"></script>
+    <script src="assets/bootstrap/js/init.js"></script>
 </body>
 
 </html>

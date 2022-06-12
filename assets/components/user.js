@@ -1,5 +1,7 @@
 
 const db =require('../../db')
+const connector = require('../../db')
+const db = connector
 
 class User{
     nom
@@ -21,6 +23,13 @@ class User{
         console.log(userId);
         console.log(sql);
         db.all(sql,(err,result)=>{
+            
+        }
+        )}
+
+    userHistorique(userId,db){
+        var sql = "SELECT * FROM historique WHERE userId = ?"
+        db.all(sql,[userId],(err,result)=>{
             if(err){
                 console.log(err);
             }else{
@@ -50,6 +59,7 @@ class User{
             }
         })
     }
+
     // suivieUpdate(req,res,userId,platId){}
     create(nom,dateNais,profession,status,poids){
         var sql = "INSERT INTO user(nom,dateNais,profession,status,poids) VALUES(?,?,?,?,?)"
@@ -58,7 +68,19 @@ class User{
                 console.log(err.message)
                 return false
             }else{
+                console.log("creation du user reussi");
+            }
+        })
+    }
+    // suivieUpdate(req, res, userId, platId) { }
 
+    create(status,nom,dateNais,poids,profession,db){
+       // var sql = "INSERT INTO user(nom,dateNais,profession,status,poids) VALUES(?,?,?,?,?)"
+        db.run('INSERT INTO user(status,nom,dateNais,poids,profession) VALUES(?,?,?,?,?) ', [status, nom, dateNais, poids, profession], (result, err) => {
+            console.log(dateNais);
+            if (err)
+                throw err
+            else {
                 console.log("l'utiliateur a bien ete creer");
                 return true
             }
@@ -76,7 +98,7 @@ class User{
             }
         })
     }
-    
+
 }
 
 class Nutritionniste extends User{
@@ -85,7 +107,12 @@ class Nutritionniste extends User{
         
     // }
     
-    commenterRepas(plateId,commentaire,userId){
+    // commenterRepas(plateId,commentaire,userId){}
+
+    constructor(){
+    }
+
+    commentPlate(plateId,comment,res){
         var sql = "INSERT INTO comment(userId,platId,comment) VAUES(?,?,?)"
         db.run(sql,[userId,plateId,comment],err=>{
             if(err){
@@ -117,3 +144,39 @@ var folon = new Admin()
 
 module.exports = User;
 // exports.numNutritioniste = Nutritionniste  
+
+// exports.User = User;
+// exports.numNutritioniste = Nutritionniste;
+
+module.exports = User;
+// suivieUpdate(req,res,userId,platId){
+//     req.getConnection((error,connection)=>{
+//         if(error){
+//             console.log(error)
+//         }else{
+//             connection.query("INSERT INTO suivie (platId,userId) VALUE(?,?)",[platId,userId],(error,result)=>{
+//                 if(error){
+//                     console.log(erreur)
+//                 }else{
+//                     res.status(200).json({result})
+//                 }
+//             })
+//         }
+//     })
+// }
+
+// suivieInfo(req,res,userId){
+//     req.getConnection((error,connection)=>{
+//         if(error){
+//             console.log(error)
+//         }else{
+//             connection.query("SELECT * from suivie WHERE id =?",[userId],(error,result)=>{
+//                 if(error){
+//                     console.log(erreur)
+//                 }else{
+//                     res.status(200).json({result})
+//                 }
+//             })
+//         }
+//     })
+// }
