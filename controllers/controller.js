@@ -12,7 +12,7 @@ const db = new sqlite3.Database(dbName,err=>{
 
 
 exports.index = (req,res)=>{
-    res.render('index.ejs')
+    res.render('index.ejs');
 }
 
 exports.plat =  (request, response) => {
@@ -44,11 +44,10 @@ exports.repas = (request, response) => {
                 response.render('plat.ejs', { plats: plat });
             }
         })
-   
+    })
     }
 
-,exports.error = (request, response) => {
+exports.error = (request, response) => {
             // response.send("JESUS SAUVE ... crois en lui");
             response.render('404.ejs');
-        })
-}
+        }

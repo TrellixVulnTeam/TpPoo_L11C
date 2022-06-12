@@ -32,15 +32,13 @@ app.use(bodyParser.json());
 app.use('/',router)
 app.use('/user',userRoute)
 
-<<<<<<< HEAD
 app.get('/', (req, res) => {
     if (err) throw err
     res.render('./views/pages/plat.ejs');
 })
-=======
 
 
->>>>>>> 66e420a3b6c04d1a5742fb167d9e483c7dcdee60
+
 app.listen(3000, () => {
     console.log('Server is running');
 });

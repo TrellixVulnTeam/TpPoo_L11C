@@ -13,7 +13,7 @@ class Repas {
     recette;
     id;
     valeurE;
-    constructor(id,nom,typeconso,platprin,complement,recette,valeurE) {
+    constructor(id, nom, typeconso, platprin, complement, recette, valeurE) {
         this.id = id
         this.nom = nom;
         this.typeconso = typeconso;
@@ -23,13 +23,13 @@ class Repas {
         this.valeurE = valeurE;
     }
 
-     InsertFood(cb) {
-            database.run('INSERT INTO repas(repasId,nom,typeConsomateur,platPrincipal,complement,recette,valeurE)', [this.id,this.nom,this.typeconso,this.platprin,this.complement,this.recette,this.valeurE], (result, err) => {
+    InsertFood(cb) {
+        database.run('INSERT INTO repas(repasId,nom,typeConsomateur,platPrincipal,complement,recette,valeurE)', [this.id, this.nom, this.typeconso, this.platprin, this.complement, this.recette, this.valeurE], (result, err) => {
             if (err) throw err;
-                console.log("Food inserted into Database Food.sqlite");
-                cb(result);
-       })
-     }
+            console.log("Food inserted into Database Food.sqlite");
+            cb(result);
+        })
+    }
     
     GetAllFood(cb) {
         database.all('SELECT * FROM repas', (result, err) => {
@@ -39,7 +39,7 @@ class Repas {
         })
     }
 
-    GetSpecificFood(id,cb) {
+    GetSpecificFood(id, cb) {
         database.get('SELECT * FROM repas WHERE repasId = ?', [id], (result, err) => {
             if (err)
                 throw err
@@ -47,14 +47,14 @@ class Repas {
         })
     }
     ADDcolumValeurE() {
-        database.run('ALTER TABLE `repas` ADD ` ValeurE` int(11)',(result,err)=>{
+        database.run('ALTER TABLE `repas` ADD ` ValeurE` int(11)', (result, err) => {
 
             if (err) throw err;
             console.log('Colonne Ajoutee avec sucess');
         });
     }
     
-    UpdateAspecificFood(id, nom, typeconso, platprin, complement, recette,ValeurE,cb) {
+    UpdateAspecificFood(id, nom, typeconso, platprin, complement, recette, ValeurE, cb) {
         database.run('UPDATE TABLE repas SET nom= ?,typeConsomateur=?,platPrincipal=?,complement=?,recette=?,ValeurE=? WHERE repasId = ?', [nom, typeconso, platprin, complement, recette, ValeurE, id], (result, err) => {
             if (err) throw err;
             console.log('Mise a jour reussi');
@@ -62,7 +62,7 @@ class Repas {
         })
     }
 
-    DeleteFood(id,cb){
+    DeleteFood(id, cb) {
         database.run('DELETE FROM repas WHERE repasId = ?', [id], (result, err) => {
             if (err) throw err;
             console.log('suppression effectue ...')
@@ -70,12 +70,45 @@ class Repas {
         })
 
     }
+    RandomFood() {
+        let arr = new Array();
+        let resultat = new Array();
+
+        
+        for (let i = 0; i < 5; i++) {
+            let rand = Math.floor(Math.random() * 5 + 1);
+            arr.push(rand);
+        }
+        console.log(arr);
+        for (let i = 0; i < 5; i++) {
+            //     database.each('SELECT * FROM repas WHERE repasId=?', [arr[i]], (result, err) => {
+            //         if (err)
+            //             throw err
+            //         console.log(result);
+            //         resultat.push(result);
+            //     })
+            // }
+            this.GetSpecificFood(arr[i], (result) => {
+                console.log(result);
+                resultat.push(result);
+            })
+            // console.log(resultat)
+
+            return resultat;
+
+        }
+
+  
 
 
+    }
 }
+  
+let food = new Repas('3', "Igname blanc", "Vegetarien", "igname", "  m", "Ecraser les condiments et bouillies dans avec l'igname");
+let tab = food.RandomFood();
+console.log(tab);
 
-// let food = new Repas('3', "Igname blanc", "Vegetarien", "igname", "  m", "Ecraser les condiments et bouillies dans avec l'igname");
-// console.log(food.recette);
+// console.log(food.recette); RandomFood()
 // /*food.InsertFood((result) => {
 //     console.log(result);
 // });

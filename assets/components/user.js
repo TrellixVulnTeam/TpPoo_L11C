@@ -1,6 +1,6 @@
 
 const connector = require('../../db')
-const db = connector 
+const db = connector
 
 class User{
     nom
@@ -14,10 +14,6 @@ class User{
     status
     id
     email
-
-    constructor(){
-
-    }
     userHistorique(userId,db){
         var sql = "SELECT * FROM historique WHERE userId = ?"
         db.all(sql,[userId],(err,result)=>{
@@ -41,20 +37,15 @@ class User{
             }
         })
     }
-<<<<<<< HEAD
     suivieUpdate(req, res, userId, platId) { }
-    
-=======
-    // suivieUpdate(req,res,userId,platId){}
->>>>>>> 66e420a3b6c04d1a5742fb167d9e483c7dcdee60
-    create(nom,dateNais,profession,status,poids,db){
-        var sql = "INSERT INTO user(nom,dateNais,profession,status,poids) VALUES(?,?,?,?,?)"
-        db.run(sql,[nom,dateNais,profession,status,poids],err=>{
-            if(err){
-                console.log(err.message)
-                return false
-            }else{
 
+    create(status,nom,dateNais,poids,profession,db){
+       // var sql = "INSERT INTO user(nom,dateNais,profession,status,poids) VALUES(?,?,?,?,?)"
+        db.run('INSERT INTO user(status,nom,dateNais,poids,profession) VALUES(?,?,?,?,?) ', [status, nom, dateNais, poids, profession], (result, err) => {
+            console.log(dateNais);
+            if (err)
+                throw err
+            else {
                 console.log("l'utiliateur a bien ete creer");
                 return true
             }
@@ -72,15 +63,14 @@ class User{
             }
         })
     }
-    
+
 }
 
 class Nutritionniste extends User{
     numNutritioniste
     constructor(){
-        
     }
-    
+
     commentPlate(plateId,comment,res){
         var sql = "INSERT INTO comment(userId,platId,comment) VAUES(?,?,?)"
         db.run(sql,[this.id,plateId,comment],err=>{
@@ -95,10 +85,10 @@ class Nutritionniste extends User{
     }
 }
 
-exports.User = User;
-exports.numNutritioniste = Nutritionniste  
+// exports.User = User;
+// exports.numNutritioniste = Nutritionniste;
 
-
+module.exports = User;
 // suivieUpdate(req,res,userId,platId){
 //     req.getConnection((error,connection)=>{
 //         if(error){
