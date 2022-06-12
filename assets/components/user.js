@@ -1,7 +1,5 @@
 
 const db =require('../../db')
-const connector = require('../../db')
-const db = connector
 
 class User{
     nom
@@ -102,15 +100,8 @@ class User{
 }
 
 class Nutritionniste extends User{
-    numNutritioniste
-    // constructor(){
-        
-    // }
-    
+    numNutritioniste    
     // commenterRepas(plateId,commentaire,userId){}
-
-    constructor(){
-    }
 
     commentPlate(plateId,comment,res){
         var sql = "INSERT INTO comment(userId,platId,comment) VAUES(?,?,?)"
