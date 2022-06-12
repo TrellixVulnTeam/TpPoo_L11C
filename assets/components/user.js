@@ -59,20 +59,21 @@ class User{
     }
 
     // suivieUpdate(req,res,userId,platId){}
-    create(nom,dateNais,profession,status,poids){
-        var sql = "INSERT INTO user(nom,dateNais,profession,status,poids) VALUES(?,?,?,?,?)"
-        db.run(sql,[nom,dateNais,profession,status,poids],err=>{
-            if(err){
-                console.log(err.message)
-                return false
-            }else{
-                console.log("creation du user reussi");
-            }
-        })
-    }
+    // create(nom,dateNais,profession,status,poids,res){
+    //     var sql = "INSERT INTO user(nom,dateNais,profession,status,poids) VALUES(?,?,?,?,?)"
+    //     db.run(sql,[nom,dateNais,profession,status,poids],err=>{
+    //         if(err){
+    //             console.log(err.message)
+    //             return false
+    //         }else{
+    //             console.log("creation du user reussi");
+    //             res.render('index')
+    //         }
+    //     })
+    // }
     // suivieUpdate(req, res, userId, platId) { }
 
-    create(status,nom,dateNais,poids,profession,db){
+    create(status,nom,dateNais,poids,profession,res){
        // var sql = "INSERT INTO user(nom,dateNais,profession,status,poids) VALUES(?,?,?,?,?)"
         db.run('INSERT INTO user(status,nom,dateNais,poids,profession) VALUES(?,?,?,?,?) ', [status, nom, dateNais, poids, profession], (result, err) => {
             console.log(dateNais);
@@ -80,6 +81,7 @@ class User{
                 throw err
             else {
                 console.log("l'utiliateur a bien ete creer");
+                // res.render('index.ejs')
                 return true
             }
         })

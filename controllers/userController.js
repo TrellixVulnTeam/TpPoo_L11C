@@ -23,9 +23,10 @@ exports.createUser = (req,res)=>{
     // console.log(req.body.name);
     // console.log(req.body);
     let user = new User();
-    var reponce = user.create(req.body.status, req.body.nom, req.body.dateNais, req.body.number, req.body.profession, db);
+    var reponce = user.create(req.body.status, req.body.nom, req.body.dateNais, req.body.number, req.body.profession,res);
     if (reponce)
         console.log('User Created ...');
+        res.render('index',{message:"utilisateur creer avec success"})
 }
 
 exports.historique = (req,res)=>{
@@ -40,6 +41,7 @@ exports.historique = (req,res)=>{
 
 
 exports.connect = (request, response) => {
+    response.
     console.log("connection du user en cours");
     console.log(request.body);
     if (request.body.nom === undefined || request.body.prenom == '' || request.body.prenom === undefined || request.body.nom == '') {

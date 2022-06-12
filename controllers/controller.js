@@ -51,3 +51,6 @@ exports.error = (request, response) => {
             // response.send("JESUS SAUVE ... crois en lui");
             response.render('404.ejs');
         }
+exports.accueil = (req,res)=>{
+    res.render('Accueil')
+}

@@ -6,11 +6,12 @@ const userController = require('../controllers/userController')
 
 
 router.get('/',controller.index);
+router.get('/accueil',controller.accueil);
 router.get('/plat', controller.plat);
 router.get('/addPlate',controller.addPlate)
 router.get('/repas', controller.repas);
 router.get('/404',controller.error)
-router.post('/logingo',userController.loginCheck)
+router.post('/login',userController.loginCheck)
 router.get('/login',userController.login)
 
 

@@ -1,1 +1,1 @@
-node_modules,config/dbconnect.js
+node_modules,config/dbconnect.js,data/food.sqlite
